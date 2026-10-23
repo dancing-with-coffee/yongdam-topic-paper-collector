@@ -2,6 +2,23 @@
 
 분야·기간(날짜)·키워드·venue 목록에 **"○○ 관련 논문만"** 이라는 2차 주제 조건을 걸어 논문을 찾고, 공개 PDF를 `논문제목(venue).pdf`로 `references/` 폴더에 내려받는 Claude skill입니다. PDF를 받을 수 없는 환경에서는 DOI·공개 PDF 링크 표(`_index.csv`, `README.md`)로 정리합니다.
 
+## 설치
+
+Claude Code:
+
+```
+/plugin marketplace add dancing-with-coffee/yongdam-topic-paper-collector
+/plugin install topic-paper-collector@yongdam-topic-paper-collector
+```
+
+Claude Code 2.1.275 이상에서는 한 줄로도 됩니다.
+
+```
+/plugin install topic-paper-collector --marketplace dancing-with-coffee/yongdam-topic-paper-collector
+```
+
+Claude 앱(Cowork)에서는 플러그인 마켓플레이스 추가 화면에 `dancing-with-coffee/yongdam-topic-paper-collector`를 입력하면 됩니다.
+
 ## 요청 예시
 
 ```
@@ -24,18 +41,20 @@ Venue : ICML, AAAI, IJCAI, KDD, ICLR, NeurIPS, CIKM, ICDM, ACL, EMNLP, NAACL, SI
 
 | 경로 | 내용 |
 |---|---|
-| `SKILL.md` | 스킬 본문(스크립트가 부록으로 포함되어 단독으로 동작) |
-| `scripts/paper_collect.py` | 검색·필터·다운로드 스크립트 (Python 3.8+, 표준 라이브러리만) |
-| `evals/` | 테스트 케이스 (`claude plugin eval` 형식) |
+| `.claude-plugin/marketplace.json` | 마켓플레이스 매니페스트 |
+| `plugins/topic-paper-collector/.claude-plugin/plugin.json` | 플러그인 매니페스트 |
+| `plugins/topic-paper-collector/skills/topic-paper-collector/SKILL.md` | 스킬 본문(스크립트가 부록으로 포함되어 단독으로 동작) |
+| `…/skills/topic-paper-collector/scripts/paper_collect.py` | 검색·필터·다운로드 스크립트 (Python 3.8+, 표준 라이브러리만) |
+| `…/skills/topic-paper-collector/evals/` | 테스트 케이스 (`claude plugin eval` 형식) |
 
 ## 스크립트 사용법
 
 ```bash
-python scripts/paper_collect.py venues
-python scripts/paper_collect.py search -k "multi-agent forecasting" -k "agent time series" \
+python plugins/topic-paper-collector/skills/topic-paper-collector/scripts/paper_collect.py venues
+python plugins/topic-paper-collector/skills/topic-paper-collector/scripts/paper_collect.py search -k "multi-agent forecasting" -k "agent time series" \
   -v ICML,NeurIPS,ICLR,KDD,ICAIF,jof --date-from 2024-10-23 --date-to 2026-10-23 \
   --require "time[- ]?series|forecast|predict" --require "multi[- ]?agent|agentic|agents\b" -o candidates.json
-python scripts/paper_collect.py download -c candidates.json -s all -d references
+python plugins/topic-paper-collector/skills/topic-paper-collector/scripts/paper_collect.py download -c candidates.json -s all -d references
 ```
 
 선택 환경변수: `S2_API_KEY`(Semantic Scholar 속도 제한 완화), `LIT_EMAIL`.

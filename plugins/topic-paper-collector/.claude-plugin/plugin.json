@@ -1,0 +1,8 @@
+{
+  "name": "topic-paper-collector",
+  "version": "1.0.0",
+  "description": "분야·기간(날짜)·키워드·venue에 '○○ 관련 논문만' 주제 조건을 걸어 논문을 찾고, 공개 PDF를 '논문제목(venue).pdf'로 references에 받거나 DOI 표로 정리한다.",
+  "author": { "name": "dancing-with-coffee", "email": "codingiscoffee@gmail.com" },
+  "repository": "https://github.com/dancing-with-coffee/yongdam-topic-paper-collector",
+  "keywords": ["literature-search", "papers", "dblp", "openalex"]
+}

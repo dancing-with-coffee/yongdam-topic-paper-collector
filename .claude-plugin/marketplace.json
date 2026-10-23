@@ -1,0 +1,22 @@
+{
+  "name": "yongdam-topic-paper-collector",
+  "owner": {
+    "name": "dancing-with-coffee",
+    "email": "codingiscoffee@gmail.com"
+  },
+  "metadata": {
+    "description": "분야·기간·키워드·venue에 주제 조건을 걸어 선행 연구를 찾고 공개 PDF를 '논문제목(venue).pdf'로 정리하는 skill",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "topic-paper-collector",
+      "source": "./plugins/topic-paper-collector",
+      "description": "분야·기간(날짜)·키워드·venue에 '○○ 관련 논문만' 주제 조건을 걸어 논문을 찾고, 공개 PDF를 '논문제목(venue).pdf'로 references에 받거나 DOI 표로 정리한다. ICAIF·Journal of Forecasting 포함.",
+      "version": "1.0.0",
+      "author": { "name": "dancing-with-coffee" },
+      "keywords": ["literature-search", "papers", "dblp", "openalex", "time-series", "multi-agent"],
+      "category": "research"
+    }
+  ]
+}
