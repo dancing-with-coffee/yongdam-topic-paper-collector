@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: recsys-llm-agent-2yr
+expected_outcome: |
+  references/ 폴더에 LLM 에이전트 기반 추천 논문 PDF가 '논문제목(venue).pdf'로 저장되고, RecSys venue가 포함되며,
+  Findings 논문은 요청하지 않았으므로 포함되지 않는다.

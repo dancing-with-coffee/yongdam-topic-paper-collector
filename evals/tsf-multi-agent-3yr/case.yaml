@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: tsf-multi-agent-3yr
+expected_outcome: |
+  references/ 폴더에 시계열 예측 × 멀티에이전트 시스템 논문 PDF가 '논문제목(venue).pdf' 이름으로 저장되고,
+  모두 지정 venue·기간(2024-10-23~2026-10-23) 안의 논문이며, 못 받은 논문은 링크와 함께 보고된다.
